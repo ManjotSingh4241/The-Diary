@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Navbar -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #555
+        }
+
+        .active {
+            color: #555;
+            background-color: #555;
+        }
+
+        .navbar {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            margin: .5rem;
+        }
+
+        .navbar-links {
+            height: 100%;
+        }
+
+        .navbar-links ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links li {
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 1rem;
+        }
+
+        .navbar-links li:hover {
+            background-color: #555;
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: .75rem;
+            right: 1rem;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+
+        .toggle-button .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .toggle-button {
+                display: flex;
+            }
+
+            .navbar-links {
+                display: none;
+                width: 100%;
+            }
+
+            .navbar-links ul {
+                width: 100%;
+                flex-direction: column;
+                background-color: #050A30;
+            }
+
+            .navbar-links ul li {
+                text-align: center;
+            }
+
+            .navbar-links ul li a {
+                padding: .5rem 1rem;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .personal {
+                display: block;
+                width: 30%;
+                height: 35%;
+                border-radius: 50%;
+                margin-left: 2%;
+                margin-top: 2%;
+            }
+        }
+    </style>
+    <!-- Form -->
+    <style>
+        #heading {
+            font-family: 'Poppins', sans-serif !important;
+            text-align: center;
+            color: antiquewhite;
+        }
+
+        #form {
+            margin-top: 6%;
+            border-color: bisque;
+            border-style: outset;
+            width: 70%;
+            padding: 0;
+        }
+
+        #name {
+            margin-left: 2%;
+            color: antiquewhite;
+            font-weight: bolder;
+            margin-bottom: 2%;
+        }
+
+        #Author {
+            width: 40%;
+        }
+
+        #mail {
+            margin-left: 2%;
+            color: antiquewhite;
+            font-weight: bolder;
+            margin-bottom: 2%;
+        }
+
+        #Email {
+            width: 40%;
+        }
+
+        #story {
+            margin-left: 2%;
+            color: antiquewhite;
+            font-weight: bolder;
+        }
+
+        #Material {
+            width: 40%;
+            margin-left: 9%;
+        }
+
+        #your {
+            margin-bottom: 1%;
+            font-size: 20px;
+        }
+
+        #other {
+            margin-left: 5%;
+            color: antiquewhite;
+        }
+
+        #UploadDate {
+            width: 30%;
+        }
+
+        .btn {
+            background: none;
+            font-weight: bolder;
+            color: bisque;
+            border: 10px wheat groove;
+            margin-left: 75%;
+            margin-bottom: 2%;
+            padding: 1%;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+        }
+    </style>
+    <!-- Responsive Form -->
+    <style>
+        @media (max-width: 800px) {
+            #heading {
+                font-size: 100%;
+            }
+
+            #form {
+                margin-top: 30%;
+            }
+
+            #Material {
+                width: 80%;
+                margin-left: 9%;
+            }
+
+            .btn {
+                margin-left: 60%;
+            }
+            #other {
+            margin-left: 5%;
+            color: antiquewhite;
+            margin-right:10%
+            }
+            #UploadDate {
+                width: 40%;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/site.css">
+    <title>The Diary</title>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar">
+            <div class="brand-title">The Diary</div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/content">All Content</a></li>
+                    <li><a href="/contentAllowed">Published Content</a></li>
+                    <li class="active"><a href="/content/upload">Upload</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--        FORM           -->
+    <center>
+        <div id="form">
+            <form method="post" action="/content/upload" class="uploader">
+                <i>
+                    <h2 id="heading">Share Your Amazing Story With US</h2>
+                </i>
+                <div id="name"><label for="Author">Your Name:</label>
+                    <input class="form-control" id="Author" name="Authon" type="text" />
+                </div>
+
+                <div id="mail">
+                    <label for="Email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input class="form-control" id="Email" name="Email" type="Email" />
+                </div>
+                <div id="story">
+                    <label for="Material">
+                        <main id="your">Your Story:</main>
+                    </label>
+                    <textarea class="form-control" id="Material" name="Material" type="text" rows="10"></textarea>
+                </div>
+                <div id="other">
+                    <label for="UploadDate">Upload Date:&nbsp;</label>
+                    <input class="form-control" id="UploadDate" name="UploadDate" type="text" />
+                    <label for="Publish">Publish Now?</label>
+                    <input class="form-control" type="checkbox" name="Publish" />
+                </div>
+                </br>
+                <input type="submit" class="btn" value="Add Story" />
+
+            </form>
+        </div>
+    </center>
+    <!-- Script -->
+    <script>
+        const toggleButton = document.getElementsByClassName('toggle-button')[0]
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active')
+        })
+    </script>
+
+    <!-- Online API -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified Bootstrap 3.3.7 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

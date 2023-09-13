@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #555
+        }
+
+        .active{
+            color:#555;
+            background-color:#555;
+        }
+        
+        .navbar {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            margin: .5rem;
+        }
+
+        .navbar-links {
+            height: 100%;
+        }
+
+        .navbar-links ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links li {
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 1rem;
+        }
+
+        .navbar-links li:hover {
+            background-color: #555;
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: .75rem;
+            right: 1rem;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+
+        .toggle-button .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .toggle-button {
+                display: flex;
+            }
+
+            .navbar-links {
+                display: none;
+                width: 100%;
+            }
+
+            .navbar-links ul {
+                width: 100%;
+                flex-direction: column;
+                background-color: #050A30;
+            }
+
+            .navbar-links ul li {
+                text-align: center;
+            }
+
+            .navbar-links ul li a {
+                padding: .5rem 1rem;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .personal {
+                display: block;
+                width: 30%;
+                height: 35%;
+                border-radius: 50%;
+                margin-left: 2%;
+                margin-top: 2%;
+            }
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/site.css">
+    <title>The Diary</title>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar">
+            <div class="brand-title">The Diary</div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/#">About</a></li>
+                    <li><a href="/content">All Content</a></li>
+                    <li><a href="/contentAllowed">Published Content</a></li>
+                    <li><a href="/content/upload">Upload</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const toggleButton = document.getElementsByClassName('toggle-button')[0]
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active')
+        })
+    </script>
+</body>
+
+</html>
